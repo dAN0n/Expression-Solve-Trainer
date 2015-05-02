@@ -18,9 +18,9 @@ public:
     GenExpr();
     ~GenExpr();
 
-    int getAnswer();
-    void Regenerate();
-    QString OutputInLabel();
+    int getAnswer(); //Получение ответа
+    void Regenerate(); //Генерация
+    QString OutputInLabel(); //Вывод строки с сгенерированным примером
 };
 
 #endif // GENEXPR_H

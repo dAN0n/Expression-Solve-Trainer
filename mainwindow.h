@@ -14,19 +14,17 @@ class MainWindow : public QMainWindow
     Q_OBJECT
     GenExpr *Example;
     int Right;
-    int Total;
+    int ExampleCounter;
 
 public slots:
-    void NextExprButtonIsClicked();
-    void StopButtonIsClicked();
+    void NextExprButtonIsClicked(); //Нажатие кнопки Next Expression
+    void TimerTimeout();
 
 signals:
-    void WHide(int Right, int Total);
+    void TrainOver(int Right); //Окончание тренировки
 
 public:
     QTimer *Timer;
-    int getRight();
-    int getTotal();
 
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();

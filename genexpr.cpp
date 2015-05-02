@@ -9,35 +9,23 @@ GenExpr::~GenExpr(){
 }
 
 void GenExpr::Regenerate(){
-    Operator=rand()%3;
-    switch(Operator){
-    case(PLUS):
-        x=-1000 + rand()%2001;
-        y=-1000 + rand()%2001;
-        if(y<0){
-            Operator=MINUS;
-            y+=2*(-y);
-        }
-        break;
+    int *NewX = new int[15];
+    int *NewY = new int[15];
 
-    case(MINUS):
-        x=-1000 + rand()%2001;
-        y=-1000 + rand()%2001;
-        if(y<0){
-            Operator=PLUS;
-            y+=2*(-y);
-        }
-        break;
-
-    case(MULTIPLE):
-        x=-20 + rand()%41;
-        y=-20 + rand()%41;
-        break;
+    for(int i=0; i<15; i++){
+        NewX[i]=i+1;
+        NewY[i]=i+1;
     }
+
+    x = NewX[rand()%14];
+    y = NewY[rand()%14];
+
+    Operator=rand()%3;
 }
 
 int GenExpr::getAnswer(){
     int Answer=0;
+
     switch(Operator){
     case(PLUS):
         Answer=x+y;
@@ -48,6 +36,7 @@ int GenExpr::getAnswer(){
     case(MULTIPLE):
         Answer=x*y;
     }
+
     return Answer;
 }
 
@@ -56,6 +45,7 @@ QString GenExpr::OutputInLabel(){
     QString xOut;
     QString yOut;
     QString OperatorSymbol;
+
     switch(Operator){
     case(PLUS):
         OperatorSymbol="+";
@@ -66,8 +56,10 @@ QString GenExpr::OutputInLabel(){
     case(MULTIPLE):
         OperatorSymbol="*";
     }
-   xOut = QString::number(x);
-   yOut = QString::number(y);
+
+    xOut = QString::number(x);
+    yOut = QString::number(y);
     Output=xOut+OperatorSymbol+yOut+"=?";
+
     return Output;
 }

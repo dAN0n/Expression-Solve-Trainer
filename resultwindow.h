@@ -12,12 +12,11 @@ class ResultWindow : public QDialog
 {
     Q_OBJECT
     int Right;
-    int Total;
     MainWindow w;
 
 public slots:
-    void StartButtonClicked();
-    void WHided(int Right, int Total);
+    void StartButtonClicked(); //Нажатие кнопки Start!
+    void TrainingOver(int Right); //Конец тренировки
 
 public:
     explicit ResultWindow(QWidget *parent = 0);
